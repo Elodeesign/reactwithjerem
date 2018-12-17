@@ -1,18 +1,21 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+
+import { Landing, Contact } from './pages'
+import { Navbar } from './components'
 
 class App extends Component {
     render() {
         return (
-            <Router>
-                <Switch>
-                    <Route path="/" exact component={() => <h1>Landing </h1>} />
-                    <Route
-                        path="/contact"
-                        component={() => <h1>Contact </h1>}
-                    />
-                </Switch>
-            </Router>
+            <Fragment>
+                <Navbar />
+                <Router>
+                    <Switch>
+                        <Route path="/" exact component={Landing} />
+                        <Route path="/contact" component={Contact} />
+                    </Switch>
+                </Router>
+            </Fragment>
         )
     }
 }
