@@ -7,15 +7,15 @@ import { Navbar } from './components'
 class App extends Component {
     render() {
         return (
-            <Fragment>
-                <Navbar />
-                <Router>
+            <Router>
+                <Fragment>
+                    <Navbar />
                     <Switch>
                         <Route path="/" exact component={Landing} />
                         <Route path="/contact" component={Contact} />
                     </Switch>
-                </Router>
-            </Fragment>
+                </Fragment>
+            </Router>
         )
     }
 }
