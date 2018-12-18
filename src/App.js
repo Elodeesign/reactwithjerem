@@ -1,7 +1,7 @@
 import React, { Component, Fragment, Suspense } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-import { Landing, Contact, Signup } from './pages'
+import { Landing, Contact, Signup, About, Projects } from './pages'
 import { Navbar } from './components'
 
 class App extends Component {
@@ -15,6 +15,8 @@ class App extends Component {
                             <Route exact path="/" component={Landing} />
                             <Route path="/contact" component={Contact} />
                             <Route path="/signup" component={Signup} />
+                            <Route path="/projects" component={Projects} />
+                            <Route path="/about" component={About} />
                         </Switch>
                     </Suspense>
                 </Fragment>
