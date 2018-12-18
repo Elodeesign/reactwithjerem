@@ -12,6 +12,12 @@ const MainContainer = styled.div`
 
 const LeftPart = styled.div``
 
+const CustomLink = styled(Link)`
+    margin-right: 1em;
+    font-weight: ${props => (props.main ? '900' : '')};
+    font-size: ${props => (props.main ? '1.3em' : '')};
+`
+
 const RightPart = styled.div``
 
 class Navbar extends Component {
@@ -19,14 +25,14 @@ class Navbar extends Component {
         return (
             <MainContainer>
                 <LeftPart>
-                    <Link to="/">Accueil</Link>
+                    <CustomLink main to="/">
+                        E.
+                    </CustomLink>
+                    <CustomLink to="/projects">Projects</CustomLink>
+                    <CustomLink to="/about">À propos</CustomLink>
+                    <CustomLink to="/contact">Contact</CustomLink>
                 </LeftPart>
-                <RightPart>
-                    <Link to="/signup" style={{ marginRight: '1em' }}>
-                        S'enregistrer
-                    </Link>
-                    <Link to="/contact">Contact</Link>
-                </RightPart>
+                <RightPart />
             </MainContainer>
         )
     }

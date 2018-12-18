@@ -1,5 +1,5 @@
-import Landing from './Landing'
-import Contact from './Contact'
-import Signup from './Signup'
+import React from 'react'
 
-export { Landing, Contact, Signup }
+export const Landing = React.lazy(() => import('./Landing'))
+export const Contact = React.lazy(() => import('./Contact'))
+export const Signup = React.lazy(() => import('./Signup'))
