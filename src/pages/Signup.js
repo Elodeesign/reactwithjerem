@@ -8,7 +8,7 @@ import { SignupForm } from '../components'
 class Signup extends Component {
     state = { isValid: false }
 
-    handleConnection = data => {
+    handleSubmit = data => {
         this.setState({ isValid: true })
     }
 
@@ -27,7 +27,7 @@ class Signup extends Component {
                 ) : (
                     <Fragment>
                         <h1>Veuillez vous enregistrer</h1>
-                        <SignupForm onFormSubmit={this.handleConnection} />
+                        <SignupForm onFormSubmit={this.handleSubmit} />
                     </Fragment>
                 )}
             </Fragment>

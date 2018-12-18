@@ -25,6 +25,8 @@ class SignupForm extends Component {
                 password,
                 password_confirm
             })
+        } else {
+            alert('Les mots de passes ne sont pas identiques')
         }
     }
 

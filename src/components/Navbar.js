@@ -5,9 +5,9 @@ import styled from 'styled-components'
 
 const MainContainer = styled.div`
     padding: 1em;
-    border-bottom: 0.1em solid #dedede;
     display: flex;
     justify-content: space-between;
+    background-color: black;
 `
 
 const LeftPart = styled.div``

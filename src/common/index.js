@@ -2,7 +2,7 @@
 import styled from 'styled-components'
 
 export const Form = styled.form`
-    display: flex;
+    display: grid;
     flex-direction: column;
     justify-content: center;
 `
@@ -17,9 +17,14 @@ export const Input = styled.input`
     width: 20em;
 `
 export const Button = styled.button`
-    background-color: white;
-    color: black;
+    color: white;
     font-weight: bold;
     padding: 1em;
     width: 10em;
+    background-color: black;
+    &:hover {
+        background-color: red;
+        color: white;
+        cursor: pointer;
+    }
 `
