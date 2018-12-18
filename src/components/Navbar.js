@@ -22,6 +22,9 @@ class Navbar extends Component {
                     <Link to="/">Accueil</Link>
                 </LeftPart>
                 <RightPart>
+                    <Link to="/signup" style={{ marginRight: '1em' }}>
+                        S'enregistrer
+                    </Link>
                     <Link to="/contact">Contact</Link>
                 </RightPart>
             </MainContainer>
