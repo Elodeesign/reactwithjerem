@@ -18,7 +18,8 @@ class SignupForm extends Component {
         event.preventDefault()
 
         const { username, email, password, password_confirm } = this.state
-        if (password === password_confirm && this.props.onFormSubmit) {
+        const isValid = username && password === password_confirm
+        if (isValid && this.props.onFormSubmit) {
             this.props.onFormSubmit({
                 username,
                 email,
@@ -26,7 +27,7 @@ class SignupForm extends Component {
                 password_confirm
             })
         } else {
-            alert('Les mots de passes ne sont pas identiques')
+            alert('Vos données ne sont pas valides')
         }
     }
 
@@ -62,7 +63,7 @@ class SignupForm extends Component {
                     onChange={this.handleChange}
                     type="password"
                 />
-                <Button>Connexion</Button>
+                <Button>S'enregistrer</Button>
             </Form>
         )
     }

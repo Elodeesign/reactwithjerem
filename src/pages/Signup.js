@@ -21,7 +21,9 @@ class Signup extends Component {
                         <h1>Votre enregistrement est OK </h1>
                         <p>Veuillez vous connectez</p>
                         <Button>
-                            <Link to="/">Accueil</Link>
+                            <Link to="/" as={Button}>
+                                Accueil
+                            </Link>
                         </Button>
                     </Fragment>
                 ) : (
