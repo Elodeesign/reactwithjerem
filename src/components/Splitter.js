@@ -19,6 +19,7 @@ const LeftPart = styled.div`
     align-items: center;
     justify-content: center;
     display: flex;
+    position: relative;
 `
 
 const RightPart = styled.div`
@@ -32,22 +33,65 @@ const RightPart = styled.div`
     align-items: center;
     justify-content: center;
     display: flex;
+    position: relative;
 `
 
 const Title = styled.h1`
     font-size: ${props => (props.bigTitle ? '7em' : '5em')};
 `
 
+const Details = styled.div`
+    background-color: black;
+    position: absolute;
+    color: white;
+    height: 3em;
+    width: 20em;
+    padding: 1em;
+    bottom: 7;
+    right: ${props => props.rightAlign && '-7em'};
+    left: ${props => props.leftAlign && '-7em'};
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+`
+
+const DetailsLabel = styled.div``
+
+const DetailsText = styled.div``
+
 class Splitter extends Component {
     render() {
-        const { leftContent, rightContent } = this.props
+        const {
+            leftContent,
+            rightContent,
+            leftDetails,
+            rightDetails,
+            detailsLabel
+        } = this.props
         return (
             <MainContainer>
                 <LeftPart {...this.props}>
                     <Title>{leftContent}</Title>
+                    {leftDetails && (
+                        <Details rightAlign>
+                            <DetailsLabel>
+                                {detailsLabel ? detailsLabel : 'Réalisé le:'}
+                            </DetailsLabel>
+                            <DetailsText>{leftDetails}</DetailsText>
+                        </Details>
+                    )}
                 </LeftPart>
                 <RightPart {...this.props}>
                     <Title>{rightContent}</Title>
+                    {rightDetails && (
+                        <Details leftAlign>
+                            <DetailsLabel>
+                                {detailsLabel ? detailsLabel : 'Réalisé le:'}
+                            </DetailsLabel>
+                            <DetailsText>{rightDetails}</DetailsText>
+                        </Details>
+                    )}
                 </RightPart>
             </MainContainer>
         )

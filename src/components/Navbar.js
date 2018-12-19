@@ -13,6 +13,7 @@ const MainContainer = styled.div`
     top: 0;
     left: 0;
     right: 0;
+    z-index: 1000;
 `
 
 const CustomLink = styled(Link)`
