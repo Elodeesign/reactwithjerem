@@ -53,7 +53,7 @@ const Details = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    text-align: center;
+    display: flex;
 `
 
 const DetailsLabel = styled.div``
