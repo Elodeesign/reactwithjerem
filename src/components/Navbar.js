@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom'
 
 import styled from 'styled-components'
 
+import { Portal, Modal, SigninForm } from '../components'
+import { withUser } from '../contexts'
+
 const MainContainer = styled.div`
     padding: 1em;
     display: flex;
@@ -25,9 +28,16 @@ const CustomLink = styled(Link)`
 
 const LeftPart = styled.div``
 
-const RightPart = styled.div``
+const RightPart = styled.div`
+    padding-right: 2em;
+`
+
+const NavbarItem = styled.div`
+    cursor: pointer;
+`
 
 class Navbar extends Component {
+    state = {}
     //Scroll navbar change background's color et link
     componentDidMount() {
         document.addEventListener('scroll', () => {
@@ -35,29 +45,40 @@ class Navbar extends Component {
         })
     }
 
+    toggleModal = () =>
+        this.setState({
+            display_modal: !this.state.display_modal
+        })
+
     render() {
-        const scrollPosition = window.scrollY
+        //const scrollPosition = window.scrollY
+
+        const { scroll, display_modal } = this.state
+        const { user } = this.props
 
         return (
-            <MainContainer scroll={scrollPosition}>
+            <MainContainer scroll={scroll}>
                 <LeftPart>
-                    <CustomLink main to="/" scroll={scrollPosition}>
-                        E.
+                    <CustomLink main to="/">
+                        {user.username}
                     </CustomLink>
-                    <CustomLink to="/projects" scroll={scrollPosition}>
-                        Projects
-                    </CustomLink>
-                    <CustomLink to="/about" scroll={scrollPosition}>
-                        À propos
-                    </CustomLink>
-                    <CustomLink to="/contact" scroll={scrollPosition}>
-                        Contact
-                    </CustomLink>
+                    <CustomLink to="/projects">Projects</CustomLink>
+                    <CustomLink to="/about">À propos</CustomLink>
+                    <CustomLink to="/contact">Contact</CustomLink>
                 </LeftPart>
-                <RightPart />
+                <RightPart>
+                    <NavbarItem onClick={this.toggleModal}>
+                        Connexion
+                    </NavbarItem>
+                    {display_modal && (
+                        <Modal onClose={this.toggleModal}>
+                            <SigninForm onFormSubmit={this.toggleModal} />
+                        </Modal>
+                    )}
+                </RightPart>
             </MainContainer>
         )
     }
 }
 
-export default Navbar
+export default withUser(Navbar)
