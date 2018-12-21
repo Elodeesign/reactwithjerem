@@ -45,6 +45,11 @@ class Navbar extends Component {
         })
     }
 
+    logout = () => {
+        this.props.userAuth.logout()
+        this.setState()
+    }
+
     toggleModal = () =>
         this.setState({
             display_modal: !this.state.display_modal
@@ -60,7 +65,9 @@ class Navbar extends Component {
             <MainContainer scroll={scroll}>
                 <LeftPart>
                     <CustomLink main to="/">
-                        {userAuth.user.username}
+                        {userAuth.user.username
+                            ? userAuth.user.username[0] + '.'
+                            : 'J.'}
                     </CustomLink>
                     <CustomLink to="/projects">Projects</CustomLink>
                     <CustomLink to="/about">À propos</CustomLink>
@@ -68,7 +75,7 @@ class Navbar extends Component {
                 </LeftPart>
                 <RightPart>
                     {userAuth.user.authenticated ? (
-                        <NavbarItem onClick={() => userAuth.logout()}>
+                        <NavbarItem onClick={this.logout}>
                             Déconnexion
                         </NavbarItem>
                     ) : (

@@ -6,13 +6,15 @@ import * as serviceWorker from './serviceWorker'
 
 import { UserContext } from './contexts'
 
-
 class UserAuth {
-    constructor(){
-        this.user = {}
+    constructor() {
+        this.user = {
+            username: null,
+            authenticated: false
+        }
     }
 
-    signIn = (user) => {
+    signIn = user => {
         this.user = {
             username: user.username,
             authenticated: true
@@ -20,10 +22,14 @@ class UserAuth {
     }
 
     logout = () => {
-        this.user = null
+        //this.user = null
         console.log('USER AUTH LOGOUT')
-        this.user = null
-        console.log("user",this.user)
+        //this.user = null
+        console.log('user', this.user)
+        this.user = {
+            username: null,
+            authenticated: false
+        }
     }
 }
 
