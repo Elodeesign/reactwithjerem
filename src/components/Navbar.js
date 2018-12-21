@@ -45,9 +45,9 @@ class Navbar extends Component {
         })
     }
 
-    logout = () => {
-        this.props.userAuth.logout()
-        this.setState()
+    logout = async () => {
+        const user = await this.props.userAuth.logout()
+        this.setState({})
     }
 
     toggleModal = () =>
