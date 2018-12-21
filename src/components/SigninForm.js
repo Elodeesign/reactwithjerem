@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 
 import { Form, Button, Input } from '../common'
 
+import { withUser } from '../contexts'
+
 class SigninForm extends Component {
     state = {
         username: '',
@@ -15,10 +17,9 @@ class SigninForm extends Component {
 
     submitForm = event => {
         event.preventDefault()
-
-        const { username, email, password } = this.state
+        this.props.userAuth.signIn(this.state)
         if (this.props.onFormSubmit) {
-            this.props.onFormSubmit({ username, email, password })
+            this.props.onFormSubmit(this.state)
         }
     }
 
@@ -53,4 +54,4 @@ class SigninForm extends Component {
     }
 }
 
-export default SigninForm
+export default withUser(SigninForm)

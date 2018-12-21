@@ -54,22 +54,28 @@ class Navbar extends Component {
         //const scrollPosition = window.scrollY
 
         const { scroll, display_modal } = this.state
-        const { user } = this.props
+        const { userAuth } = this.props
 
         return (
             <MainContainer scroll={scroll}>
                 <LeftPart>
                     <CustomLink main to="/">
-                        {user.username}
+                        {userAuth.user.username}
                     </CustomLink>
                     <CustomLink to="/projects">Projects</CustomLink>
                     <CustomLink to="/about">À propos</CustomLink>
                     <CustomLink to="/contact">Contact</CustomLink>
                 </LeftPart>
                 <RightPart>
-                    <NavbarItem onClick={this.toggleModal}>
-                        Connexion
-                    </NavbarItem>
+                    {userAuth.user.authenticated ? (
+                        <NavbarItem onClick={() => userAuth.logout()}>
+                            Déconnexion
+                        </NavbarItem>
+                    ) : (
+                        <NavbarItem onClick={this.toggleModal}>
+                            Connexion
+                        </NavbarItem>
+                    )}
                     {display_modal && (
                         <Modal onClose={this.toggleModal}>
                             <SigninForm onFormSubmit={this.toggleModal} />

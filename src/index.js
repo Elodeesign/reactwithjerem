@@ -6,8 +6,29 @@ import * as serviceWorker from './serviceWorker'
 
 import { UserContext } from './contexts'
 
+
+class UserAuth {
+    constructor(){
+        this.user = {}
+    }
+
+    signIn = (user) => {
+        this.user = {
+            username: user.username,
+            authenticated: true
+        }
+    }
+
+    logout = () => {
+        this.user = null
+        console.log('USER AUTH LOGOUT')
+        this.user = null
+        console.log("user",this.user)
+    }
+}
+
 const WithUserApp = () => (
-    <UserContext.Provider value={{ username: 'E.' }}>
+    <UserContext.Provider value={new UserAuth()}>
         <App />
     </UserContext.Provider>
 )

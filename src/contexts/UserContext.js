@@ -1,10 +1,10 @@
-import React, { Component, createContext } from 'react'
+import React from 'react'
 
 const UserContext = React.createContext(null)
 
 export const withUser = Component => props => (
     <UserContext.Consumer>
-        {user => <Component {...props} user={user} />}
+        {userAuth => <Component {...props} userAuth={userAuth} />}
     </UserContext.Consumer>
 )
 
